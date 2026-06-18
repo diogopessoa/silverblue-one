@@ -1,7 +1,7 @@
 # Silverblue One
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diogopessoa/silverblue-one/main/files/top-readme.png" alt="Silverblue One Banner" width="100%" style="border-radius: 8px;">
+  <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/top-readme.png" alt="Silverblue One Banner" width="100%" style="border-radius: 8px;">
 </p>
 
 Script de pós-instalação para Fedora Atomic.
@@ -49,7 +49,7 @@ Para utilizar os comandos `apt` e `dnf` no terminal, é necessário os container
   
 ## Licença
 
-MIT
+[MIT](https://github.com/diogopessoa/silverblue-one/blob/main/LICENSE)
 
 ## Referências
 
