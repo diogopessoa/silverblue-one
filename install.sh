@@ -244,7 +244,7 @@ if curl -fsSL https://raw.githubusercontent.com/diogopessoa/rpm-ostree-manager/m
 fi
 
 # ============================================================
-# REPOSITÓRIO E PACOTES FLATPAK
+# FLATHUB E PACOTES FLATPAK (revise a lista antes de executar)
 # ============================================================
 info "Iniciando migração Flatpak para o Flathub..."
 pkill -f gnome-software || true
@@ -335,17 +335,17 @@ echo -e "\n"
 echo "▶ Sumário de Modificações: " 
 echo -e " $status_rpm Pacotes RPM"
 echo -e " $status_brew Homebrew"
-echo -e " $status_brew_fish Homebrew/Fish integrado"
-echo -e " $status_brew_bash Homebrew/Bash integrado"
-echo -e " $status_fish_notify Notificações longas do terminal"
-echo -e " $status_fish_greeting Boas-vindas do Fish"
+echo -e " $status_brew_fish Homebrew/Fish"
+echo -e " $status_brew_bash Homebrew/Bash"
+echo -e " $status_fish_notify Notificações do Terminal"
+echo -e " $status_fish_greeting Mensagem de Abertura Fish-shell"
 echo -e " $status_apt_dnf Alias \"apt\" e \"dnf\" via Distrobox"
-echo -e " $status_fisher Fisher instalado"
+echo -e " $status_fisher Fisher plugins"
 echo -e " $status_network Network wait-online desativado"
-echo -e " $status_fonts Office Fonts aplicadas"
-echo -e " $status_icons Hatter Icons Theme instalado"
-echo -e " $status_rpm_manager RPM-OSTree Manager pronto"
-echo -e " $status_flatpak Transição Flathub concluída"
+echo -e " $status_fonts Office Fonts"
+echo -e " $status_icons Hatter Icons Theme"
+echo -e " $status_rpm_manager RPM-OSTree Manager"
+echo -e " $status_flatpak Transição Flatpak Fedora para Flathub"
 echo ""
 echo -e "${BLUE}${BOLD}Tudo pronto! Reinicie o sistema para aplicar as mudanças.${NC}"
 read -rp "Pressione Enter para encerrar..."
