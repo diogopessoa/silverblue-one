@@ -1,7 +1,12 @@
 # Silverblue One
 
 <p align="center">
-  <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/top-readme.png" alt="Silverblue One Banner" width="100%" style="border-radius: 8px;">
+  <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/fedora-one-banner.jpg" alt="Silverblue One Banner" width="60%" style="border-radius: 8px;">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Fedora-Atomic%20OS-blue?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora OS">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
 </p>
 
 Script de pós-instalação para Fedora Atomic.
