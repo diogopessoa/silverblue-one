@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
 </p>
 
-Script de pós-instalação para Fedora Atomic.
+Script de pós-instalação para Fedora Atomic. Testado no Fedora Silverblue 44, mas possivelmente compatível com versões anteriores.
 
 ## O que o script faz
 
