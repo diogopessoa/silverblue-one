@@ -13,17 +13,17 @@ Script de pós-instalação para [Fedora Atomic](https://fedoraproject.org/atomi
 
 ## O que o script entrega
 
-- **Fish Shell**: (inclui boas-vindas): recursos inteligentes e fácies de usar no terminal 
+- **Fish Shell** (inclui boas-vindas): recursos inteligentes e fácies de usar no terminal 
 - **Fisher**: gerenciador de plugins do Fish
 - **Homebrew**: gerenciador de pacotes para programas CLI
 - **Terminal**: `brew` integrado e configurado com **Bash** e **Fish**
 - **RPM-OSTree Manager**: CLI simples e intuitiva de gestão de camadas, rollback, instalar/remover pacotes RPM
-- **Distrobox**: instalar e executar qualquer distribuição no terminal
+- **Distrobox**: contâiner para instalar e executar qualquer distribuição Linux via terminal
 - **Alias Distrobox (APT & DNF)**: cria `alias` para executar `apt` (Ubuntu) e `dnf` (Fedora) via Distrobox
 - **Fontes Office**: compatível com OnlyOffice, LibreOffice e etc.
 - **Ícones Hatter**: um visual moderno e consistente sem perder o estilo original
 - **Desativa network wait-online**: acelera a inicialização do sistema
-- **Flatpk Flathub (lista pessoal)**: Migra Flatpak Fedora para Flathub
+- **Flatpak Flathub (lista pessoal)**: Migra Flatpak Fedora para Flathub
 
 ## Compatibilidade
 
