@@ -11,15 +11,18 @@
 
 Script de pós-instalação para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/) versões 42, 43, 44+.
 
-## O que o script faz
+## O que o script entrega
 
-- Instala Fish Shell
-- Instala Homebrew
-- Instala Distrobox
-- Instala Fisher
-- Integra Homebrew com Bash e Fish
-- Notificação do terminal "comando concluído"
-- Cria alias para executar `apt` (Ubuntu) e `dnf` (Fedora) via Distrobox
+- **Fish Shell** (inclui boas-vindas): recursos inteligentes e fácil de usar no terminal 
+- **Fisher**: gerenciador de plugins do Fish
+- **Homebrew**: integrado e configurado para **Bash** e **Fish**
+- **RPM-OSTree Manager**: CLI simples e intuitiva de gestão de camadas, rollback, instalar/remover pacotes RPM
+- **Distrobox**: containers Linux integrados com a pasta do usuário
+- Cria **alias** para executar **`apt`** (Ubuntu) e **`dnf`** (Fedora) via Distrobox
+- **Fontes Office**: compátivel com OnlyOffice, LibreOffice e etc.
+- **Ícones Hatter**: para um visual moderno e consistente
+- Desativa **NetworkManager-wait-online.service** para acelerar a inicialização do sistema
+- **Flatpk Flathub**: Migra Flatpak Fedora para **Flathub** (minha lista pessoal de programas)
 
 ## Compatibilidade
 
