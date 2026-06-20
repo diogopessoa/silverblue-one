@@ -1,4 +1,4 @@
-# silverblue one
+# silverblue-one
 
 <p align="center">
   <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/banner_silverblue_one.png" alt="Silverblue One Banner" width="90%" style="border-radius: 8px;">
@@ -13,15 +13,16 @@ Script de pós-instalação para [Fedora Atomic](https://fedoraproject.org/atomi
 
 ## O que o script entrega
 
-- **Fish Shell** (inclui boas-vindas): recursos inteligentes e fácil de usar no terminal 
+- **Fish Shell**: (inclui boas-vindas): recursos inteligentes e fácil de usar no terminal 
 - **Fisher**: gerenciador de plugins do Fish
-- **Homebrew**: integrado e configurado para **Bash** e **Fish**
+- **Homebrew**: gerenciador de pacotes para programas CLI
+- **Homebrew e Terminal**: `brew` integrado e configurado com **Bash** e **Fish**
 - **RPM-OSTree Manager**: CLI simples e intuitiva de gestão de camadas, rollback, instalar/remover pacotes RPM
-- **Distrobox**: executa containers Linux integrados com a pasta do usuário
-- **Alias Distrobox (APT & DNF)**: cria `alias` para executar `apt`** (Ubuntu) e `dnf` (Fedora) via Distrobox
+- **Distrobox**: instalar e executar qualquer distribuição no terminal
+- **Alias Distrobox (APT & DNF)**: cria `alias` para executar `apt` (Ubuntu) e `dnf` (Fedora) via Distrobox
 - **Fontes Office**: compatível com OnlyOffice, LibreOffice e etc.
 - **Ícones Hatter**: um visual moderno e consistente sem perder o estilo original
-- **Desativa network Wait-online** acelera a inicialização do sistema
+- **Desativa network wait-online**: acelera a inicialização do sistema
 - **Flatpk Flathub (lista pessoal)**: Migra Flatpak Fedora para **Flathub**
 
 ## Compatibilidade
