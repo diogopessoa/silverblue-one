@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
 </p>
 
-Script de pós-instalação para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/). Compatível com versões do Fedora Atomic 42, 43, 44+.
+Script de pós-instalação para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/) versões 42, 43, 44+.
 
 ## O que o script faz
 
@@ -17,9 +17,8 @@ Script de pós-instalação para [Fedora Atomic](https://fedoraproject.org/atomi
 - Instala Homebrew
 - Instala Distrobox
 - Instala Fisher
-- Integra Fish Shell ao GNOME
 - Integra Homebrew com Bash e Fish
-- Adiciona notificações para comandos longos no terminal
+- Notificação do terminal "comando concluído"
 - Cria alias para executar `apt` (Ubuntu) e `dnf` (Fedora) via Distrobox
 
 ## Compatibilidade
