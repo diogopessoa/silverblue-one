@@ -21,7 +21,7 @@ Configuração:
 
 ### Filtro do SyncThing 
 
-**Desktop** abre WebUI GUI no navegador (http://127.0.0.1:8384/) => Pastas => Filtros
+**Desktop** abre a GUI local do Syncthing no navegavor de internet, e vai em => Pastas => Filtros
 
 **Pastas:**
 
