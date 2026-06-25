@@ -53,6 +53,9 @@ Para utilizar os comandos `apt` e `dnf` no terminal com Distrobox é necessário
 - ubuntu
 - fedora
 
+## Ajustes Pós Script
+
+Após concluir a execução do script, fazer os [meus ajustes](https://github.com/diogopessoa/silverblue-one/blob/main/files/meus-ajustes.md)  pessoais de programas. 
   
 ## Licença
 
