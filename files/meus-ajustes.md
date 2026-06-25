@@ -1,7 +1,8 @@
 # MEUS AJUSTES
 
-## SyncThing 
-Após instalar o SyncThingy (Flatpak), instalar a extensão `AppIndicator and KStatusNotifierItem`.
+## SyncThing Desktop
+
+Após instalar o [SyncThingy](https://flathub.org/pt-BR/apps/com.github.zocker_160.SyncThingy) Flatpak no Desktop, instalar a extensão `AppIndicator and KStatusNotifierItem`.
 
 Configuração:
 
@@ -18,6 +19,82 @@ Configuração:
  - no navegador de internet, crie um atalho para o menu de aplicativos (web app hub).
  - agora pode desativar a extensão 'AppIndicator'
 
+### Filtro do SyncThing 
+
+**Desktop** abre WebUI GUI no navegador (http://127.0.0.1:8384/) => Pastas => Filtros
+
+**Pastas:**
+
+**Obsidian**
+- ID da pasta: gfaaq-gyot4
+- Pasta: /var/home/diogo/Documentos/Obsidian
+- Filtros:
+
+``` 
+(?d).DS_Store
+(?d).thumbnails
+(?d).trashed-*
+(?d).stversions
+(?d).stfolder
+(?d)**/.~lock.*#
+(?d)**/~$*
+(?d)**/.*.tmp
+(?d)**/*.tmp
+(?d)**/*.TMP
+(?d)**/cache/
+(?d)**/Cache/
+(?d)**/temp/
+(?d)**/Temp/
+(?i)**/.obsidian/plugins/*/data.*
+(?i)**/.obsidian/*.json
+(?i)**/.obsidian/workspace
+(?i)**/.obsidian/core-plugins.json
+```
+
+**Redmi 12S Camera** 
+- ID da pasta:	aoj9k-47hzk
+- Pasta: /var/home/diogo/Imagens/Redmi 12S Camera
+- Filtros (nada)
+
+---
+
+## SyncThing Android
+
+Após instalar [Syncthing-Fork](https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&hl=pt_BR), vai em Pastas => Filtros
+
+**Pastas:**
+
+**Obsidian**
+- ID da pasta: gfaaq-gyot4
+- Pasta: /Documents/Obsidian
+- Filtros:
+
+``` 
+(?d).DS_Store
+(?d).thumbnails
+(?d).trashed-*
+(?d).stversions
+(?d).stfolder
+(?d)**/.~lock.*#
+(?d)**/~$*
+(?d)**/.*.tmp
+(?d)**/*.tmp
+(?d)**/*.TMP
+(?d)**/cache/
+(?d)**/Cache/
+(?d)**/temp/
+(?d)**/Temp/
+(?i)**/.obsidian/plugins/*/data.*
+(?i)**/.obsidian/*.json
+(?i)**/.obsidian/workspace
+(?i)**/.obsidian/core-plugins.json
+```
+
+**Redmi 12S Camera** 
+- ID da pasta:	aoj9k-47hzk
+- Pasta: /DCIM
+- Filtros (nada)
+  
 ## GNOME Shell Extensions
 - Caffeine
 - Clipboard indicator @tudomatu.com
@@ -62,40 +139,6 @@ Menu, Configurações...
 - Passfail 2 remove the easy and hard buttons
 - Review heatmap
 - Smart keyboard
-
-### SyncThingy
-
-Abre WebUI GUI (http://127.0.0.1:8384/), Pastas
-
-**Obsidian**
--  ID da pasta: gfaaq-gyot4
--  Pasta: /var/home/diogo/Imagens/Redmi 12S Camera
-
-- Filtros:
-``` 
-(?d).DS_Store
-(?d).thumbnails
-(?d).trashed-*
-(?d).stversions
-(?d).stfolder
-(?d)**/.~lock.*#
-(?d)**/~$*
-(?d)**/.*.tmp
-(?d)**/*.tmp
-(?d)**/*.TMP
-(?d)**/cache/
-(?d)**/Cache/
-(?d)**/temp/
-(?d)**/Temp/
-(?i)**/.obsidian/plugins/*/data.*
-(?i)**/.obsidian/*.json
-(?i)**/.obsidian/workspace
-(?i)**/.obsidian/core-plugins.json
-```
-**Redmi 12S Camera** 
-- Filtros (nada)
-- ID da pasta:	aoj9k-47hzk
-- Pasta: /var/home/diogo/Documentos/Obsidian
 
 ## Atalhos de Teclado Personalizados
 
