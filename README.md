@@ -9,11 +9,11 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
 </p>
 
-Script de pós-instalação para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/) versões 42, 43, 44+.
+Script de pós-instalação para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/) versões 42-44+.
 
 ## O que o script entrega
 
-- **Fish Shell** (inclui boas-vindas): recursos inteligentes e fácies de usar no terminal 
+- **Fish Shell**:  Uma linha de comando inteligente com auto-sugestão e auto-completar
 - **Fisher**: gerenciador de plugins do Fish
 - **Homebrew**: gerenciador de pacotes para programas CLI
 - **Terminal**: `brew` integrado e configurado com **Bash** e **Fish**
