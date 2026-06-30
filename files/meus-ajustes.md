@@ -36,18 +36,14 @@ Configuração:
 (?d).trashed-*
 (?d).stversions
 (?d).stfolder
-(?d)**/.~lock.*#
-(?d)**/~$*
-(?d)**/.*.tmp
-(?d)**/*.tmp
-(?d)**/*.TMP
-(?d)**/cache/
-(?d)**/Cache/
-(?d)**/temp/
-(?d)**/Temp/
-(?i)**/.obsidian/plugins/*/data.*
-(?i)**/.obsidian/*.json
-(?i)**/.obsidian/workspace
+(?d)/.~lock.*#
+(?d)/~$*
+(?i)(?d)/*.tmp
+(?i)(?d)/cache/
+(?i)(?d)/temp/
+(?i)/.obsidian/plugins/*/data.*
+(?i)/.obsidian/*.json
+(?i)/.obsidian/workspace
 (?i)**/.obsidian/core-plugins.json
 ```
 
@@ -75,18 +71,14 @@ Após instalar [Syncthing-Fork](https://play.google.com/store/apps/details?id=co
 (?d).trashed-*
 (?d).stversions
 (?d).stfolder
-(?d)**/.~lock.*#
-(?d)**/~$*
-(?d)**/.*.tmp
-(?d)**/*.tmp
-(?d)**/*.TMP
-(?d)**/cache/
-(?d)**/Cache/
-(?d)**/temp/
-(?d)**/Temp/
-(?i)**/.obsidian/plugins/*/data.*
-(?i)**/.obsidian/*.json
-(?i)**/.obsidian/workspace
+(?d)/.~lock.*#
+(?d)/~$*
+(?i)(?d)/*.tmp
+(?i)(?d)/cache/
+(?i)(?d)/temp/
+(?i)/.obsidian/plugins/*/data.*
+(?i)/.obsidian/*.json
+(?i)/.obsidian/workspace
 (?i)**/.obsidian/core-plugins.json
 ```
 
@@ -161,4 +153,8 @@ Menu, Configurações...
 - Mover a janela do espaço de trabalho à direita: `Alt+Super+Page Down`
 - Mover a janela do espaço de trabalho à esquerda: `Alt+Super+Page Up`
 
+## Alternativas de Programas
+
+### SyncUp
+[SyncUp](https://github.com/siddarthkay/syncup) é um cliente Syncthing de código aberto e gratuito para iOS e Android.
 
