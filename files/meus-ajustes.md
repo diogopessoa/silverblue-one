@@ -143,6 +143,10 @@ Na primeira vez:
 * mantenha o VaultSync aberto;
 * aguarde até que todos os arquivos sejam sincronizados.
 
+### Etapa 6 - Automação de uploud VaultSync + Obsidian
+
+A [documentação do VaultSync](https://github.com/psimaker/vaultsync/blob/main/docs/instant-upload.md) ensina a usar o app **Shortcuts** (Atalhos) do iPhone para fazer uplouds automáticos das notas ao fechar o Obsidian. 
+
 ## GNOME Shell Extensions
 - Caffeine
 - Clipboard indicator @tudomatu.com
