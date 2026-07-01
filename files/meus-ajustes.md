@@ -1,6 +1,6 @@
 # MEUS AJUSTES
 
-## SyncThing Desktop
+## SyncThing Desktop Linux
 
 Após instalar o [SyncThingy](https://flathub.org/pt-BR/apps/com.github.zocker_160.SyncThingy) Flatpak no Desktop, instalar a extensão `AppIndicator and KStatusNotifierItem`.
 
@@ -54,7 +54,7 @@ Configuração:
 
 ---
 
-## SyncThing Android
+## SyncThing no Android
 
 Após instalar [Syncthing-Fork](https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&hl=pt_BR), vai em Pastas => Filtros
 
@@ -86,7 +86,63 @@ Após instalar [Syncthing-Fork](https://play.google.com/store/apps/details?id=co
 - ID da pasta:	aoj9k-47hzk
 - Pasta: /DCIM
 - Filtros (nada)
-  
+
+## VaultSync no iOS
+
+### Etapa 1 - Instale
+
+**[VaultSync na App Store](https://apps.apple.com/br/app/vaultsync-for-obsidian/id6761845197)**
+
+Não abra o Obsidian primeiro.
+
+Abra primeiro o VaultSync.
+
+### Etapa 2 – Adicionar o iPhone como dispositivo Syncthing
+
+No VaultSync escolha:
+
+```
+Add Device
+```
+
+Ele oferecerá duas opções:
+
+* Scan QR Code (recomendado)
+* Paste Device ID
+
+Escolha **Scan QR Code**.
+
+### Etapa 3 – Mostrar o QR Code no Linux
+
+Na interface Web do Syncthing:
+
+```
+Ações
+→ Mostrar ID
+```
+
+Será exibido um QR Code.
+
+Aponte a câmera do iPhone para esse QR Code.
+
+O VaultSync adicionará automaticamente o computador Linux como peer.
+
+### Etapa 4 – Compartilhar o cofre
+
+Ainda no Linux:
+
+Abra a pasta compartilhada do Obsidian e marque o iphone.
+
+Somente depois que a sincronização inicial terminar, abra o Obsidian.
+
+### Etapa 5 – Primeira sincronização
+
+Na primeira vez:
+
+* deixe o iPhone desbloqueado;
+* mantenha o VaultSync aberto;
+* aguarde até que todos os arquivos sejam sincronizados.
+
 ## GNOME Shell Extensions
 - Caffeine
 - Clipboard indicator @tudomatu.com
@@ -153,8 +209,31 @@ Menu, Configurações...
 - Mover a janela do espaço de trabalho à direita: `Alt+Super+Page Down`
 - Mover a janela do espaço de trabalho à esquerda: `Alt+Super+Page Up`
 
+## Obsidian plugins
+
+**Commander**
+
+Por jsmorabito & phibrO
+
+**Dynamic Outline**
+
+Por theopavlove
+
+**Hide Sidebars**
+
+Por hasanyilmaz
+
+**Iconize**
+
+Por Florian Woelki
+
+**Similar Notes**
+
+Por Young Lee
+
+Find semantically similar notes using Al. Local models (mobile & desktop) or cloud APIs.
+
 ## Alternativas de Programas
 
-### SyncUp
-[SyncUp](https://github.com/siddarthkay/syncup) é um cliente Syncthing de código aberto e gratuito para iOS e Android.
+### 
 
