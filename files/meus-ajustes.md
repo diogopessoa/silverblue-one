@@ -1,4 +1,4 @@
-# MEUS AJUSTES
+# MEUS AJUSTES NO FEDORA
 
 ## SyncThing Desktop Linux
 
@@ -237,7 +237,36 @@ Por Young Lee
 
 Find semantically similar notes using Al. Local models (mobile & desktop) or cloud APIs.
 
-## Alternativas de Programas
+## Ajustes Opcionais
 
-### 
+### dns.forge.de 
 
+- internet mais rápida e bloqueio de anúncios
+
+```
+# IPV4
+49.12.67.122, 91.99.154.175, 176.9.93.198, 176.9.1.117
+
+# IPV6
+2a01:4f8:c013:29d::122, 2a01:4f8:c010:8c35::175
+```
+
+### DNS Padrão do meu Fedora
+
+``` 
+IPV4:
+45.90.28.136, 45.90.30.136
+
+IPV6:
+2a07:a8c0::74:e421, 2a07:a8c1::74:e421
+```
+
+### Aplicar o dns.forge.de
+
+1. Abra **Configurações**.
+2. Entre em **Rede** ou **Wi‑Fi**, dependendo da conexão usada.
+3. Clique na **engrenagem** da conexão ativa.
+4. Abra a aba **IPv4** e, se necessário, também **IPv6**.
+5. Desative o DNS automático.
+6. Adicione os servidores do `dnsforge` como endereços IP do provedor.
+7. Clique em **Aplicar** e reconecte a rede, se preciso.
