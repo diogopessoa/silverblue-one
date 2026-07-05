@@ -1,7 +1,7 @@
-# silverblue-one
+# SILVERBLUE ONE 
 
 <p align="center">
-  <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/banner_silverblue_one.png" alt="Silverblue One Banner" width="90%" style="border-radius: 8px;">
+  <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/banner_silverblueone.png" alt="Silverblue One Banner" width="90%" style="border-radius: 8px;">
 </p>
 
 <p align="center">
@@ -61,11 +61,12 @@ Após concluir a execução do script, fazer os [meus ajustes](https://github.co
 
 - [MIT](https://github.com/diogopessoa/silverblue-one/blob/main/LICENSE)
 
-## Referências
+## Créditos
 
 * [Fedora Atomic Desktops](https://fedoraproject.org/atomic-desktops/)
 * [Homebrew](https://brew.sh)
 * [Distrobox](https://distrobox.it)
 * [Fish Shell](https://fishshell.com)
 * [Fisher](https://github.com/jorgebucaran/fisher)
+* [Hatter Icons Theme](https://github.com/Mibea/Hatter)
 
