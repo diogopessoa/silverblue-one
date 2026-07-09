@@ -21,7 +21,7 @@ Script de pós-instalação pessoal para [Fedora Atomic](https://fedoraproject.o
 - **Distrobox**: contâiner para instalar e executar qualquer distribuição Linux via terminal
 - **Alias Distrobox (APT & DNF)**: cria `alias` para executar `apt` (Ubuntu) e `dnf` (Fedora) via Distrobox
 - **Fontes Office**: compatível com OnlyOffice, LibreOffice e etc.
-- **Tema de Ícones Hatter**: um visual moderno e consistente sem perder o estilo original
+- **Hatter**: tema de ícones com visual moderno e consistente sem perder o estilo original
 - **Desativa network wait-online**: acelera a inicialização do sistema
 - **Flatpak Flathub (lista pessoal)**: Migra Flatpak Fedora para Flathub
 
