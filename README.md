@@ -54,16 +54,16 @@ Após a execução do script, os arquivos estarão localizados em:
 / (root)
 ├── etc/
 │   └── profile.d/
-│       └── homebrew.sh              <-- Script de inicialização do Brew para Bash
+│       └── homebrew.sh              <-- Script de inicialização do Brew
 │
 └── var/home/seu_usuario/            
     ├── .config/
     │   └── fish/
-    │       ├── config.fish          <-- Configuração principal (Blocos do Brew e Notificações)
+    │       ├── config.fish          <-- Blocos do Brew e Notificações
     │       └── functions/
     │           ├── apt.fish         <-- Alias do comando apt via Distrobox
     │           ├── dnf.fish         <-- Alias do comando dnf via Distrobox
-    │           ├── fish_greeting.fish <-- Mensagem customizada de boas-vindas do Fish
+    │           ├── fish_greeting.fish <-- Mensagem de boas-vindas do Fish
     │           └── fisher.fish      <-- Código base do gerenciador de plugins Fisher
     │
     └── .local/
