@@ -1,4 +1,4 @@
-# SILVERBLUE ONE 
+# Scrip Pós-Instalação Pessoal 
 
 <p align="center">
   <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/banner_silverblueone.png" alt="Silverblue One Banner" width="90%" style="border-radius: 8px;">
@@ -45,6 +45,36 @@ Após a instalação, reinicie o sistema para aplicar todos os ajustes.
 ```bash
 systemctl reboot
 ```
+
+## Destino dos Arquivos
+
+Após a execução do script, os arquivos estarão localizados em:
+
+```text
+/ (Raiz do Sistema)
+├── etc/
+│   └── profile.d/
+│       └── homebrew.sh              <-- Script de inicialização do Brew para Bash
+│
+└── var/home/seu_usuario/            <-- Sua pasta $HOME (Diretório real no Silverblue)
+    ├── .config/
+    │   └── fish/
+    │       ├── config.fish          <-- Configuração principal (Blocos do Brew e Notificações)
+    │       └── functions/
+    │           ├── apt.fish         <-- Alias do comando apt via Distrobox
+    │           ├── dnf.fish         <-- Alias do comando dnf via Distrobox
+    │           ├── fish_greeting.fish <-- Mensagem customizada de boas-vindas do Fish
+    │           └── fisher.fish      <-- Código base do gerenciador de plugins Fisher
+    │
+    └── .local/
+        └── share/
+            ├── fonts/
+            │   └── office_fonts/    <-- Pasta onde os arquivos .ttf/.otf foram extraídos
+            │
+            └── icons/
+                └── Hatter/          <-- Pasta com o tema de ícones macOS clonado do Git
+```
+
 
 ## Alias APT DNF e Distrobox
 
