@@ -157,6 +157,7 @@ A [documentação do VaultSync](https://github.com/psimaker/vaultsync/blob/main/
 - Notification Timeout @chlumskyaclav
 - ScreenToSpace @dilzhan 
 - Vitals @corecoding
+- WinTile @nowsci
 - Workspace Bar @jguece
 
 ## Extensões de Navegador
@@ -270,3 +271,8 @@ IPV6:
 5. Desative o DNS automático.
 6. Adicione os servidores do `dnsforge` como endereços IP do provedor.
 7. Clique em **Aplicar** e reconecte a rede, se preciso.
+
+## Ações Rápidas no Nautilus
+
+Script de **ações rápidas** com clique direito dentro do Nautilus:
+- [GitHub nautilus-actions](https://github.com/diogopessoa/nautilus-actions)
