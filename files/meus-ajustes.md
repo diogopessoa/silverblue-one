@@ -21,7 +21,7 @@ Configuração:
 
 ### Filtro do SyncThing 
 
-**Desktop** abre a GUI local do Syncthing no navegavor de internet, e vai em => Pastas => Filtros
+Ainda no navegavor de internet, abra a GUI local do Syncthing, e vá em: `Pastas => Filtros` 
 
 **Pastas:**
 
@@ -200,7 +200,7 @@ Menu, Configurações...
 - Smile emojis: comando `/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=smile it.mijorus.smile`, atalho `Super+;` 
 - Collector: comando `/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=collector it.mijorus.collector`, atalho `Super+C`
 
-#### Atalhos Som e Mídia
+#### Atalhos de Som e Mídia
 - Aumentar volume: `Alt+Seta_Acima`
 - Diminuir volume: `Alt+Seta_Abaixo`
 - Faixa anterior: `Alt+<`
@@ -216,27 +216,17 @@ Menu, Configurações...
 
 ## Obsidian plugins
 
-**Commander**
-
+- **Commander**
 Por jsmorabito & phibrO
-
-**Dynamic Outline**
-
+- **Dynamic Outline**
 Por theopavlove
-
-**Hide Sidebars**
-
+- **Hide Sidebars**
 Por hasanyilmaz
-
-**Iconize**
-
+-**Iconize**
 Por Florian Woelki
-
-**Similar Notes**
-
+- **Similar Notes**
 Por Young Lee
 
-Find semantically similar notes using Al. Local models (mobile & desktop) or cloud APIs.
 
 ## Ajustes Opcionais
 
