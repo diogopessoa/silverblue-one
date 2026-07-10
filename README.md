@@ -1,5 +1,3 @@
-# Scrip Pós-Instalação 
-
 <p align="center">
   <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/banner_silverblueone.png" alt="Silverblue One Banner" width="90%" style="border-radius: 8px;">
 </p>
@@ -9,7 +7,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
 </p>
 
-Script de pós-instalação pessoal para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/) versões 42-44+.
+**Silverblue One** é um script de pós-instalação pessoal para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/), compatível com as versões 42-44+.
 
 ## O que o script entrega
 
