@@ -153,6 +153,7 @@ A [documentação do VaultSync](https://github.com/psimaker/vaultsync/blob/main/
 - Compact top bar @metehan
 - Dash to panel @micxgx
   - configurações salvas do dock ou painel: https://github.com/diogopessoa/my-package-lists/tree/main/share
+- Foresight (open overview/activities when workspace is empty) @pesarder.dev
 - Lock Keys @lockkeys
 - Notification Timeout @chlumskyaclav
 - ScreenToSpace @dilzhan 
@@ -242,7 +243,8 @@ Por Young Lee
 2a01:4f8:c013:29d::122, 2a01:4f8:c010:8c35::175
 ```
 
-### DNS Padrão do meu Fedora
+### NextDNS do meu Fedora 
+[Minha configuração NextDNS](https://my.nextdns.io/74e421/setup)
 
 ``` 
 IPV4:
@@ -252,7 +254,7 @@ IPV6:
 2a07:a8c0::74:e421, 2a07:a8c1::74:e421
 ```
 
-### Aplicar o dns.forge.de
+#### Aplicar o NextDNS no Fedora manualmente
 
 1. Abra **Configurações**.
 2. Entre em **Rede** ou **Wi‑Fi**, dependendo da conexão usada.
@@ -261,6 +263,8 @@ IPV6:
 5. Desative o DNS automático.
 6. Adicione os servidores do `dnsforge` como endereços IP do provedor.
 7. Clique em **Aplicar** e reconecte a rede, se preciso.
+
+Usar NextDNS no Android e iOS também.
 
 ## Ações Rápidas no Nautilus
 
