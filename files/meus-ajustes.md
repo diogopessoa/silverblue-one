@@ -152,11 +152,13 @@ A [documentação do VaultSync](https://github.com/psimaker/vaultsync/blob/main/
 - **Clipboard indicator** por @tudomatu.com
 - **Dash to panel** por @micxgx
   - configurações salvas do dock ou painel: https://github.com/diogopessoa/my-package-lists/tree/main/share
-- **Foresight** (open overview/activities when workspace is empty) por @pesarder.dev
+- **Foresight** (open activities overview when workspace is empty) por @pesarder.dev
 - **Lock Keys** por @lockkeys
 - **Notification Timeout** por @chlumskyaclav
 - **ScreenToSpace** por @dilzhan 
 - **Vitals** por @corecoding
+  - >Fixing it only requires going into Vital's settings and changing the storage path from `/` to `/sysroot`
+  - [Vitals stopped reporting Disk data on Fedora](https://github.com/corecoding/Vitals/issues/477#issuecomment-4950507147)
 - **WinTile** por @nowsci
 - **Workspace Bar** por @jguece
 
