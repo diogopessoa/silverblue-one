@@ -21,7 +21,7 @@ Configuração:
 
 ### Filtro do SyncThing 
 
-Ainda no navegavor de internet, abra a GUI local do Syncthing, e vá em: `Pastas => Filtros` 
+Ainda no navegavor de internet, abra a GUI local do Syncthing, e vá em: `Pastas > Filtros` 
 
 **Pastas:**
 
@@ -56,7 +56,7 @@ Ainda no navegavor de internet, abra a GUI local do Syncthing, e vá em: `Pastas
 
 ## SyncThing no Android
 
-Após instalar [Syncthing-Fork](https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&hl=pt_BR), vai em Pastas => Filtros
+Após instalar [Syncthing-Fork](https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&hl=pt_BR), vai em Pastas > Filtros
 
 **Pastas:**
 
@@ -148,18 +148,17 @@ Na primeira vez:
 A [documentação do VaultSync](https://github.com/psimaker/vaultsync/blob/main/docs/instant-upload.md) ensina a usar o app **Shortcuts** (Atalhos) do iPhone para fazer uplouds automáticos das notas ao fechar o Obsidian. 
 
 ## GNOME Shell Extensions
-- Caffeine
-- Clipboard indicator @tudomatu.com
-- Compact top bar @metehan
-- Dash to panel @micxgx
+- **Caffeine** por patapon.info
+- **Clipboard indicator** por @tudomatu.com
+- **Dash to panel** por @micxgx
   - configurações salvas do dock ou painel: https://github.com/diogopessoa/my-package-lists/tree/main/share
-- Foresight (open overview/activities when workspace is empty) @pesarder.dev
-- Lock Keys @lockkeys
-- Notification Timeout @chlumskyaclav
-- ScreenToSpace @dilzhan 
-- Vitals @corecoding
-- WinTile @nowsci
-- Workspace Bar @jguece
+- **Foresight** (open overview/activities when workspace is empty) por @pesarder.dev
+- **Lock Keys** por @lockkeys
+- **Notification Timeout** por @chlumskyaclav
+- **ScreenToSpace** por @dilzhan 
+- **Vitals** por @corecoding
+- **WinTile** por @nowsci
+- **Workspace Bar** por @jguece
 
 ## Extensões de Navegador
 - Dark Reader
@@ -172,18 +171,18 @@ A [documentação do VaultSync](https://github.com/psimaker/vaultsync/blob/main/
 
 Menu, Configurações...
 
-**=> Desative:**
+**Desative:**
 - Brave Rewards/recompensas;
 - ​Brave News/notícias;
 - Brave Wallet/caritera;
 - Notificações;
 - Mostrar número ícone do escudo;
 
-**=> Filtros de conteúdo:**
+**Filtros de conteúdo:**
 - Fanboys Annoyances + uBO
 - Bypass Paywalls Clean 
 
-**=> Ative:**
+**Ative:**
 - Widevine
 - Indexar outros mecanismos de pesquisa
 - Economia de memória
@@ -199,7 +198,8 @@ Menu, Configurações...
 #### Atalhos de programas
 - Terminal Ptyxis: comando `ptyxis`, atalho `Super+T`
 - Smile emojis: comando `/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=smile it.mijorus.smile`, atalho `Super+;` 
-- Collector: comando `/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=collector it.mijorus.collector`, atalho `Super+C`
+- Collector: comando `/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=collector it.mijorus.collector`, atalho `Super+Alt+C`
+- Clipboard Indicator: comando direto nas configurações do aplicativo. atalho `Super+C`
 
 #### Atalhos de Som e Mídia
 - Aumentar volume: `Alt+Seta_Acima`
@@ -217,16 +217,11 @@ Menu, Configurações...
 
 ## Obsidian plugins
 
-- **Commander**
-Por jsmorabito & phibrO
-- **Dynamic Outline**
-Por theopavlove
-- **Hide Sidebars**
-Por hasanyilmaz
--**Iconize**
-Por Florian Woelki
-- **Similar Notes**
-Por Young Lee
+- **Commander**  por jsmorabito & phibrO
+- **Dynamic Outline**  por theopavlove
+- **Hide Sidebars**  por hasanyilmaz
+- **Iconize**  por Florian Woelki
+- **Similar Notes**  por Young Lee
 
 
 ## Ajustes Opcionais
