@@ -16,7 +16,7 @@
 - **Homebrew**: gerenciador de pacotes para programas CLI
 - **Terminal**: integrado e configurado com **Bash** e **Fish** e **brew**
 - **RPM-OSTree Manager**: CLI simples e intuitiva de gestão de camadas, rollback, instalar/remover pacotes RPM
-- **Distrobox**: contâiner para instalar e executar qualquer distribuição Linux via terminal
+- **Distrobox**: contâiner para instalar e executar distribuições Linux via terminal
 - **Alias Distrobox (APT & DNF)**: cria `alias` para executar `apt` (Ubuntu) e `dnf` (Fedora) via Distrobox
 - **Fontes Office**: compatível com OnlyOffice, LibreOffice e etc.
 - **Hatter**: tema de ícones com visual moderno e consistente sem perder o estilo original
@@ -97,4 +97,4 @@ Após concluir a execução do script, fazer os [meus ajustes](https://github.co
 * [Fish Shell](https://fishshell.com)
 * [Fisher](https://github.com/jorgebucaran/fisher)
 * [Hatter Icons Theme](https://github.com/Mibea/Hatter)
-
+* [RPM-OSTree Manager](https://github.com/diogopessoa/rpm-ostree-manager)
