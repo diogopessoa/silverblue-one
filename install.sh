@@ -2,7 +2,7 @@
 
 # Descrição: Script pessoal de configuração do Fedora Silverblue
 # Author: Diogo Pessoa
-# Versão: 1.2
+# Versão: 1.3
 # GitHub: https://github.com/diogopessoa/silverblue-one/
 
 set -Eeuo pipefail
@@ -40,6 +40,8 @@ done 2>/dev/null &
 # Variáveis de Status (Padrão: Falha)
 status_rpm="${RED} ✗${NC}"
 status_brew="${RED} ✗${NC}"
+status_brew_update="${RED} ✗${NC}"
+status_distrobox_upgrade="${RED} ✗${NC}"
 status_brew_fish="${RED} ✗${NC}"
 status_brew_bash="${RED} ✗${NC}"
 status_fish_notify="${RED} ✗${NC}"
@@ -86,6 +88,24 @@ if [[ ! -x "$BREW_BIN" ]]; then
 else
     status_brew="${GREEN} ✓${NC}"
     success "Homebrew já instalado"
+fi
+
+# ============================================================
+# HOMEBREW AUTO-UPDATE
+# ============================================================
+info "Instalando Homebrew Auto-Update..."
+if curl -fsSL https://raw.githubusercontent.com/diogopessoa/brew-update/main/install.sh | bash; then
+    status_brew_update="${GREEN} ✓${NC}"
+    success "Homebrew Auto-Update instalado com sucesso"
+fi
+
+# ============================================================
+# DISTROBOX CONTAINERS AUTO-UPDATE
+# ============================================================
+info "Instalando Distrobox Containers Auto-Update..."
+if curl -fsSL https://raw.githubusercontent.com/diogopessoa/distrobox-upgrade/main/distrobox-upgrade.sh | bash; then
+    status_distrobox_upgrade="${GREEN} ✓${NC}"
+    success "Distrobox Containers Auto-Update instalado com sucesso"
 fi
 
 # ============================================================
@@ -181,7 +201,6 @@ success "Funções analógicas apt e dnf criadas via Distrobox"
 # ============================================================
 # FISHER (MÉTODO DECLARATIVO SEGURO)
 # ============================================================
-# Baixa a função diretamente no diretório do Fish. Funciona mesmo antes do primeiro reboot.
 if [ ! -f "$FISH_FUNCTIONS/fisher.fish" ]; then
     info "Instalando gerenciador Fisher de forma declarativa..."
     if curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish -o "$FISH_FUNCTIONS/fisher.fish"; then
@@ -335,6 +354,8 @@ echo -e "\n"
 echo "▶ Sumário de Modificações: " 
 echo -e " $status_rpm Pacotes RPM"
 echo -e " $status_brew Homebrew"
+echo -e " $status_brew_update Homebrew Auto-Update"
+echo -e " $status_distrobox_upgrade Distrobox Auto-Update"
 echo -e " $status_brew_fish Homebrew/Fish"
 echo -e " $status_brew_bash Homebrew/Bash"
 echo -e " $status_fish_notify Notificações do Terminal"
