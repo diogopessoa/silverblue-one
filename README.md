@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/banner_silverblueone.png" alt="Silverblue One Banner" width="90%" style="border-radius: 8px;">
+  <img src="https://github.com/diogopessoa/silverblue-one/blob/main/files/new_banner_silverblueone.png" alt="Silverblue One Banner" width="90%" style="border-radius: 8px;">
 </p>
 
 <p align="center">
@@ -11,11 +11,10 @@
 
 ## O que o script entrega
 
-- **Fish Shell**:  Uma linha de comando inteligente com auto-sugestão e auto-completar
-- **Fisher**: gerenciador de plugins do Fish
+- **Zsh Shell**:  Uma linha de comando inteligente com auto-sugestão e auto-completar
 - **Homebrew**: gerenciador de pacotes para programas CLI
-- **Terminal**: integrado e configurado com **Bash** e **Fish** e **brew**
-- **RPM-OSTree Manager**: CLI simples e intuitiva de gestão de camadas, rollback, instalar/remover pacotes RPM
+- **Terminal**: integrado e configurado com **Bash** e **Zsh** e **brew**
+- **Bootc Manager**: CLI simples para gerenciar o sistema atômico com Bootc
 - **Distrobox**: contâiner para instalar e executar distribuições Linux via terminal
 - **Alias Distrobox (APT & DNF)**: cria `alias` para executar `apt` (Ubuntu) e `dnf` (Fedora) via Distrobox
 - **Fontes Office**: compatível com OnlyOffice, LibreOffice e etc.
