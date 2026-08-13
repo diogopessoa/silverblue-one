@@ -6,6 +6,8 @@
 # GitHub: https://github.com/diogopessoa/silverblue-one/
 
 set -Eeuo pipefail
+export SYSTEMD_PAGER=""
+export NONINTERACTIVE=1
 
 # ============================================================
 # FUNÇÕES DE LOG E CORES
@@ -105,7 +107,7 @@ fi
 # INSTALAÇÃO ZSH + STARSHIP + PLUGINS (VIA HOMEBREW)
 # ============================================================
 info "Instalando Zsh, Starship e plugins via Homebrew..."
-if brew install zsh starship zsh-syntax-highlighting zsh-autosuggestions; then
+if brew install -y zsh starship zsh-syntax-highlighting zsh-autosuggestions; then
     status_zsh_packages="${GREEN} ✓${NC}"
     success "Pacotes do Zsh e Starship instalados"
 fi
