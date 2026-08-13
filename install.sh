@@ -247,7 +247,7 @@ rm -rf "$HATTER_DIR"
 # ============================================================
 # BOOTC MANAGER
 # ============================================================
-info "Instalando RPM-OSTree Manager..."
+info "Instalando Bootc Manager..."
 if curl -fsSL https://raw.githubusercontent.com/diogopessoa/bootc-manager/main/install.sh | bash; then
     status_rpm_manager="${GREEN} ✓${NC}"
 fi
