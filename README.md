@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
 </p>
 
-**Silverblue One** é um script de pós-instalação pessoal para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/), compatível com as versões 42-44+.
+**Silverblue One** é um script de pós-instalação pessoal para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/), compatível com as versões 42>44+.
 
 ## O que o script entrega
 
@@ -50,26 +50,25 @@ Após a execução do script, os arquivos estarão localizados em:
 ```text
 / (root)
 ├── etc/
-│   └── profile.d/
-│       └── homebrew.sh              <-- Script de inicialização do Brew
+│   ├── profile.d/
+│   │   └── homebrew.sh              <-- Script de inicialização do Brew (Bash/Zsh)
+│   └── shells                       <-- Lista de shells válidos (inclui o Zsh do Brew)
 │
-└── var/home/seu_usuario/            
-    ├── .config/
-    │   └── fish/
-    │       ├── config.fish          <-- Blocos do Brew e Notificações
-    │       └── functions/
-    │           ├── apt.fish         <-- Alias do comando apt via Distrobox
-    │           ├── dnf.fish         <-- Alias do comando dnf via Distrobox
-    │           ├── fish_greeting.fish <-- Mensagem de boas-vindas do Fish
-    │           └── fisher.fish      <-- Código base do gerenciador de plugins Fisher
+└── var/home/user/                   
+    ├── .zshrc                       <-- Configuração principal (Brew env, Starship, Aliases e Plugins)
     │
-    └── .local/
+    ├── .local/
+    │   └── share/
+    │       ├── fonts/
+    │       │   └── office_fonts/    <-- Fontes de escritório (.ttf/.otf)
+    │       │
+    │       └── icons/
+    │           └── Hatter/          <-- Tema de ícones Hatter
+    │
+    └── ../linuxbrew/.linuxbrew/     <-- Instalação do Homebrew
         └── share/
-            ├── fonts/
-            │   └── office_fonts/    <-- Pasta onde os arquivos .ttf/.otf foram extraídos
-            │
-            └── icons/
-                └── Hatter/          <-- Pasta com o tema de ícones Hátter
+            ├── zsh-autosuggestions/ <-- Plugin de sugestões automáticas
+            └── zsh-syntax-highlighting/ <-- Plugin de destaque de sintaxe
 ```
 
 
@@ -93,7 +92,5 @@ Após concluir a execução do script, fazer os [meus ajustes](https://github.co
 * [Fedora Atomic Desktops](https://fedoraproject.org/atomic-desktops/)
 * [Homebrew](https://brew.sh)
 * [Distrobox](https://distrobox.it)
-* [Fish Shell](https://fishshell.com)
-* [Fisher](https://github.com/jorgebucaran/fisher)
 * [Hatter Icons Theme](https://github.com/Mibea/Hatter)
-* [RPM-OSTree Manager](https://github.com/diogopessoa/rpm-ostree-manager)
+* [Bootc](https://bootc.dev/)
