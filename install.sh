@@ -2,7 +2,7 @@
 
 # Descrição: Script pessoal de configuração do Fedora Silverblue
 # Author: Diogo Pessoa
-# Versão: 1.3
+# Versão: 2.0 (Zsh + Starship Edition + Bootc-Manager)
 # GitHub: https://github.com/diogopessoa/silverblue-one/
 
 set -Eeuo pipefail
@@ -42,12 +42,10 @@ status_rpm="${RED} ✗${NC}"
 status_brew="${RED} ✗${NC}"
 status_brew_update="${RED} ✗${NC}"
 status_distrobox_upgrade="${RED} ✗${NC}"
-status_brew_fish="${RED} ✗${NC}"
+status_zsh_packages="${RED} ✗${NC}"
+status_zshrc="${RED} ✗${NC}"
+status_default_shell="${RED} ✗${NC}"
 status_brew_bash="${RED} ✗${NC}"
-status_fish_notify="${RED} ✗${NC}"
-status_fish_greeting="${RED} ✗${NC}"
-status_apt_dnf="${RED} ✗${NC}"
-status_fisher="${RED} ✗${NC}"
 status_network="${RED} ✗${NC}"
 status_fonts="${RED} ✗${NC}"
 status_icons="${RED} ✗${NC}"
@@ -59,18 +57,10 @@ echo -e "${GREEN}│  ${BOLD}Silverblue-One ${NC}${GREEN}  │${NC}"
 echo -e "${BLUE}╰────────────────────────────────────╯${NC}\n"
 
 # ============================================================
-# DIRETÓRIOS DE CONFIGURAÇÃO
+# PACOTES RPM (DISTROBOX)
 # ============================================================
-FISH_CONFIG="$HOME/.config/fish/config.fish"
-FISH_FUNCTIONS="$HOME/.config/fish/functions"
-
-mkdir -p "$FISH_FUNCTIONS"
-
-# ============================================================
-# PACOTES RPM
-# ============================================================
-info "Solicitando instalação de Fish e Distrobox via rpm-ostree..."
-if rpm-ostree install fish distrobox >/dev/null 2>&1 || true; then
+info "Solicitando instalação do Distrobox via rpm-ostree..."
+if rpm-ostree install distrobox >/dev/null 2>&1 || true; then
     status_rpm="${GREEN} ✓${NC}"
     success "Comando rpm-ostree enviado com sucesso"
 fi
@@ -89,6 +79,9 @@ else
     status_brew="${GREEN} ✓${NC}"
     success "Homebrew já instalado"
 fi
+
+# Garantir que o ambiente do Brew esteja ativo nesta sessão do script
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # ============================================================
 # HOMEBREW AUTO-UPDATE
@@ -109,25 +102,81 @@ if curl -fsSL https://raw.githubusercontent.com/diogopessoa/distrobox-upgrade/ma
 fi
 
 # ============================================================
-# HOMEBREW + FISH
+# INSTALAÇÃO ZSH + STARSHIP + PLUGINS (VIA HOMEBREW)
 # ============================================================
-if ! grep -q "Homebrew (Fedora Silverblue / Atomic)" "$FISH_CONFIG" 2>/dev/null; then
-    cat << 'EOF' >> "$FISH_CONFIG"
-
-# Homebrew (Fedora Silverblue / Atomic)
-if test -x /home/linuxbrew/.linuxbrew/bin/brew
-    /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
-end
-EOF
-    status_brew_fish="${GREEN} ✓${NC}"
-    success "Integração Homebrew/Fish adicionada"
-else
-    status_brew_fish="${GREEN} ✓${NC}"
-    success "Integração Homebrew/Fish já existe"
+info "Instalando Zsh, Starship e plugins via Homebrew..."
+if brew install zsh starship zsh-syntax-highlighting zsh-autosuggestions; then
+    status_zsh_packages="${GREEN} ✓${NC}"
+    success "Pacotes do Zsh e Starship instalados"
 fi
 
 # ============================================================
-# HOMEBREW + BASH
+# CONFIGURAÇÃO DO ~/.zshrc
+# ============================================================
+info "Configurando o arquivo ~/.zshrc..."
+
+cat << 'EOF' > "$HOME/.zshrc"
+# ============================================================
+# HOMEBREW ENV
+# ============================================================
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# ============================================================
+# ALIASES (DISTROBOX & SISTEMA)
+# ============================================================
+alias apt="distrobox enter ubuntu -- sudo apt"
+alias dnf="distrobox enter fedora -- sudo dnf"
+
+# ============================================================
+# STARSHIP PROMPT
+# ============================================================
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+fi
+
+# ============================================================
+# PLUGINS DO ZSH (A ORDEM DE CARREGAMENTO É CRUCIAL!)
+# ============================================================
+BREW_SHARE="/home/linuxbrew/.linuxbrew/share"
+
+# 1. Autosuggestions
+if [ -f "$BREW_SHARE/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+    source "$BREW_SHARE/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
+# 2. Syntax Highlighting (DEVE SER O ÚLTIMO!)
+if [ -f "$BREW_SHARE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source "$BREW_SHARE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+EOF
+
+status_zshrc="${GREEN} ✓${NC}"
+success "Arquivo ~/.zshrc gerado com sucesso"
+
+# ============================================================
+# DEFINIR ZSH DO BREW COMO SHELL PADRÃO
+# ============================================================
+info "Definindo Zsh do Homebrew como Shell padrão do usuário..."
+BREW_ZSH="/home/linuxbrew/.linuxbrew/bin/zsh"
+
+if grep -q "$BREW_ZSH" /etc/shells 2>/dev/null; then
+    success "Caminho $BREW_ZSH já está em /etc/shells"
+else
+    echo "$BREW_ZSH" | sudo tee -a /etc/shells >/dev/null
+    success "Caminho $BREW_ZSH adicionado ao /etc/shells"
+fi
+
+if sudo usermod --shell "$BREW_ZSH" "$USER"; then
+    # Reseta comando customizado do Ptyxis se existir
+    gsettings reset org.gnome.Ptyxis default-profile-command 2>/dev/null || true
+    status_default_shell="${GREEN} ✓${NC}"
+    success "Shell padrão alterado para Zsh"
+fi
+
+# ============================================================
+# HOMEBREW + BASH (INTEGRAÇÃO DE BACKUP)
 # ============================================================
 info "Configurando Homebrew para Bash..."
 sudo tee /etc/profile.d/homebrew.sh >/dev/null << 'EOF'
@@ -138,79 +187,6 @@ fi
 EOF
 status_brew_bash="${GREEN} ✓${NC}"
 success "Integração Homebrew/Bash criada"
-
-# ============================================================
-# NOTIFICAÇÕES FISH
-# ============================================================
-if ! grep -q "fish_preexec" "$FISH_CONFIG" 2>/dev/null; then
-    cat << 'EOF' >> "$FISH_CONFIG"
-
-# Notificações para comandos longos
-function preexec --on-event fish_preexec
-    set -g last_command_start (date +%s)
-end
-
-function notify_command_end --on-event fish_postexec
-    set duration (math (date +%s) - $last_command_start)
-    if test $duration -ge 3
-        set cmd_name (string split ' ' -- $argv[1])[1]
-        notify-send ">_ Comando concluído" "'$cmd_name' finalizado em $duration segundos"
-    fi
-end
-EOF
-    status_fish_notify="${GREEN} ✓${NC}"
-    success "Notificações do Fish configuradas"
-else
-    status_fish_notify="${GREEN} ✓${NC}"
-    success "Notificações do Fish já configuradas"
-fi
-
-# ============================================================
-# FISH GREETING
-# ============================================================
-cat << 'EOF' > "$FISH_FUNCTIONS/fish_greeting.fish"
-function fish_greeting
-    echo -n "🐟 Fish-shell pronto! Digite "
-    set_color green
-    echo -n help
-    set_color normal
-    echo " para instruções"
-    echo ""
-end
-EOF
-status_fish_greeting="${GREEN} ✓${NC}"
-success "Mensagem de boas-vindas do Fish configurada"
-
-# ============================================================
-# ALIAS DISTROBOX (APT & DNF)
-# ============================================================
-cat << 'EOF' > "$FISH_FUNCTIONS/apt.fish"
-function apt
-    distrobox enter ubuntu -- sudo apt $argv
-end
-EOF
-
-cat << 'EOF' > "$FISH_FUNCTIONS/dnf.fish"
-function dnf
-    distrobox enter fedora -- sudo dnf $argv
-end
-EOF
-status_apt_dnf="${GREEN} ✓${NC}"
-success "Funções analógicas apt e dnf criadas via Distrobox"
-
-# ============================================================
-# FISHER (MÉTODO DECLARATIVO SEGURO)
-# ============================================================
-if [ ! -f "$FISH_FUNCTIONS/fisher.fish" ]; then
-    info "Instalando gerenciador Fisher de forma declarativa..."
-    if curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish -o "$FISH_FUNCTIONS/fisher.fish"; then
-        status_fisher="${GREEN} ✓${NC}"
-        success "Fisher injetado com sucesso (estará ativo no próximo login)"
-    fi
-else
-    status_fisher="${GREEN} ✓${NC}"
-    success "Fisher já configurado"
-fi
 
 # ============================================================
 # DISABLE NETWORK WAIT-ONLINE
@@ -255,15 +231,15 @@ fi
 rm -rf "$HATTER_DIR"
 
 # ============================================================
-# RPM-OSTREE MANAGER
+# BOOTC MANAGER
 # ============================================================
 info "Instalando RPM-OSTree Manager..."
-if curl -fsSL https://raw.githubusercontent.com/diogopessoa/rpm-ostree-manager/main/install.sh | bash; then
+if curl -fsSL https://raw.githubusercontent.com/diogopessoa/bootc-manager/main/install.sh | bash; then
     status_rpm_manager="${GREEN} ✓${NC}"
 fi
 
 # ============================================================
-# FLATHUB E PACOTES FLATPAK (revise a lista antes de executar)
+# FLATHUB E PACOTES FLATPAK
 # ============================================================
 info "Iniciando migração Flatpak para o Flathub..."
 pkill -f gnome-software || true
@@ -352,20 +328,18 @@ fi
 # ============================================================
 echo -e "\n"
 echo "▶ Sumário de Modificações: " 
-echo -e " $status_rpm Pacotes RPM"
+echo -e " $status_rpm Distrobox (rpm-ostree)"
 echo -e " $status_brew Homebrew"
 echo -e " $status_brew_update Homebrew Auto-Update"
 echo -e " $status_distrobox_upgrade Distrobox Auto-Update"
-echo -e " $status_brew_fish Homebrew/Fish"
-echo -e " $status_brew_bash Homebrew/Bash"
-echo -e " $status_fish_notify Notificações do Terminal"
-echo -e " $status_fish_greeting Mensagem de Abertura Fish-shell"
-echo -e " $status_apt_dnf Alias \"apt\" e \"dnf\" via Distrobox"
-echo -e " $status_fisher Fisher plugins"
+echo -e " $status_zsh_packages Zsh + Starship + Plugins (Brew)"
+echo -e " $status_zshrc Configuração ~/.zshrc"
+echo -e " $status_default_shell Zsh definido como Shell Padrão"
+echo -e " $status_brew_bash Integração Homebrew/Bash"
 echo -e " $status_network Network wait-online desativado"
 echo -e " $status_fonts Office Fonts"
 echo -e " $status_icons Hatter Icons Theme"
-echo -e " $status_rpm_manager RPM-OSTree Manager"
+echo -e " $status_rpm_manager Bootc Manager"
 echo -e " $status_flatpak Transição Flatpak Fedora para Flathub"
 echo ""
 echo -e "${BLUE}${BOLD}Tudo pronto! Reinicie o sistema para aplicar as mudanças.${NC}"
