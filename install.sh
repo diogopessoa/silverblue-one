@@ -119,11 +119,23 @@ info "Configurando o arquivo ~/.zshrc..."
 
 cat << 'EOF' > "$HOME/.zshrc"
 # ============================================================
+# MENSAGEM DE BOAS-VINDAS DO ZSH
+if [[ -o interactive ]]; then
+    echo "\033[1;32m>_ Zsh\033[0m está pronto!"
+    echo ""
+fi
+
+# ============================================================
 # HOMEBREW ENV
 # ============================================================
 if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# ============================================================
+# INTERPRETA # COMO COMENTARIO MESMO EM MODO INTERATIVO
+# ============================================================
+setopt INTERACTIVE_COMMENTS
 
 # ============================================================
 # ALIASES (DISTROBOX & SISTEMA)
@@ -178,7 +190,7 @@ if sudo usermod --shell "$BREW_ZSH" "$USER"; then
 fi
 
 # ============================================================
-# HOMEBREW + BASH (INTEGRAÇÃO DE BACKUP)
+# INTEGRAÇÃO HOMEBREW + BASH
 # ============================================================
 info "Configurando Homebrew para Bash..."
 sudo tee /etc/profile.d/homebrew.sh >/dev/null << 'EOF'
@@ -275,7 +287,6 @@ lista_apps=(
     com.ranfdev.DistroShelf
     com.rustdesk.RustDesk
     com.valvesoftware.Steam
-    com.warlordsoftwares.youtube-downloader-4ktube
     de.haeckerfelix.Fragments
     fr.handbrake.ghb
     io.ente.auth
@@ -291,7 +302,6 @@ lista_apps=(
     net.nokyan.Resources
     no.mifi.losslesscut
     org.fedoraproject.MediaWriter
-    org.feichtmeier.Musicpod
     org.freefilesync.FreeFileSync
     org.gnome.Boxes
     org.gnome.Calculator
