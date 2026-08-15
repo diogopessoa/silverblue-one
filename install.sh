@@ -2,7 +2,7 @@
 
 # Descrição: Script pessoal de configuração do Fedora Silverblue
 # Author: Diogo Pessoa
-# Versão: 2.0 (Zsh + Starship Edition + Bootc-Manager)
+# Versão: 3.0
 # GitHub: https://github.com/diogopessoa/silverblue-one/
 
 set -Eeuo pipefail
@@ -30,14 +30,20 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 # ============================================================
-# SUDO KEEP-ALIVE
+# SUDO KEEP-ALIVE (Solicita senha 1x e renova até o fim)
 # ============================================================
+info "Solicitando privilégios de administrador..."
 sudo -v
+
+# Mantém o sudo ativo em segundo plano enquanto o script estiver rodando
 while true; do
     sudo -n true
     sleep 60
-    kill -0 "$$" || exit
+    kill -0 "$$" 2>/dev/null || exit
 done 2>/dev/null &
+SUDO_KEEPALIVE_PID=$!
+
+trap 'kill "$SUDO_KEEPALIVE_PID" 2>/dev/null || true' EXIT
 
 # Variáveis de Status (Padrão: Falha)
 status_rpm="${RED} ✗${NC}"
@@ -54,17 +60,27 @@ status_icons="${RED} ✗${NC}"
 status_rpm_manager="${RED} ✗${NC}"
 status_flatpak="${RED} ✗${NC}"
 
-echo -e "${BLUE}╭────────────────────────────────────╮${NC}"
+echo -e "${BLUE}╭───────────────────╮${NC}"
 echo -e "${GREEN}│  ${BOLD}Silverblue-One ${NC}${GREEN}  │${NC}"
-echo -e "${BLUE}╰────────────────────────────────────╯${NC}\n"
+echo -e "${BLUE}╰───────────────────╯${NC}\n"
 
 # ============================================================
 # PACOTES RPM (DISTROBOX)
 # ============================================================
-info "Solicitando instalação do Distrobox via rpm-ostree..."
-if rpm-ostree install distrobox >/dev/null 2>&1 || true; then
+info "Verificando Distrobox..."
+
+if command -v distrobox >/dev/null 2>&1; then
     status_rpm="${GREEN} ✓${NC}"
-    success "Comando rpm-ostree enviado com sucesso"
+    success "Distrobox já está instalado"
+else
+    info "Instalando Distrobox via rpm-ostree..."
+    if rpm-ostree install distrobox >/dev/null 2>&1; then
+        status_rpm="${GREEN} ✓${NC}"
+        success "Distrobox adicionado à próxima implantação"
+        warning "Reinicie o sistema para concluir a instalação do Distrobox"
+    else
+        warning "Falha ao adicionar Distrobox via rpm-ostree"
+    fi
 fi
 
 # ============================================================
@@ -72,26 +88,41 @@ fi
 # ============================================================
 BREW_BIN="/home/linuxbrew/.linuxbrew/bin/brew"
 
-if [[ ! -x "$BREW_BIN" ]]; then
-    info "Instalando Homebrew..."
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    status_brew="${GREEN} ✓${NC}"
-    success "Homebrew instalado"
-else
+if [[ -x "$BREW_BIN" ]]; then
     status_brew="${GREEN} ✓${NC}"
     success "Homebrew já instalado"
+else
+    info "Instalando Homebrew..."
+
+    if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+        >/dev/null 2>&1 \
+        && [[ -x "$BREW_BIN" ]]; then
+
+        status_brew="${GREEN} ✓${NC}"
+        success "Homebrew instalado com sucesso"
+    else
+        warning "Falha ao instalar o Homebrew"
+    fi
 fi
 
-# Garantir que o ambiente do Brew esteja ativo nesta sessão do script
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Garantir que o ambiente do Brew esteja ativo nesta sessão
+if [[ -x "$BREW_BIN" ]]; then
+    eval "$("$BREW_BIN" shellenv)"
+else
+    warning "Homebrew não está disponível; etapas dependentes do Brew serão ignoradas"
+fi
 
 # ============================================================
 # HOMEBREW AUTO-UPDATE
 # ============================================================
-info "Instalando Homebrew Auto-Update..."
-if curl -fsSL https://raw.githubusercontent.com/diogopessoa/brew-update/main/install.sh | bash; then
-    status_brew_update="${GREEN} ✓${NC}"
-    success "Homebrew Auto-Update instalado com sucesso"
+if [[ -x "$BREW_BIN" ]]; then
+    info "Instalando Homebrew Auto-Update..."
+    if curl -fsSL https://raw.githubusercontent.com/diogopessoa/brew-update/main/install.sh | bash; then
+        status_brew_update="${GREEN} ✓${NC}"
+        success "Homebrew Auto-Update instalado com sucesso"
+    else
+        warning "Falha ao instalar o Homebrew Auto-Update"
+    fi
 fi
 
 # ============================================================
@@ -101,15 +132,23 @@ info "Instalando Distrobox Containers Auto-Update..."
 if curl -fsSL https://raw.githubusercontent.com/diogopessoa/distrobox-upgrade/main/distrobox-upgrade.sh | bash; then
     status_distrobox_upgrade="${GREEN} ✓${NC}"
     success "Distrobox Containers Auto-Update instalado com sucesso"
+else
+    warning "Falha ao instalar o Distrobox Containers Auto-Update"
 fi
 
 # ============================================================
 # INSTALAÇÃO ZSH + STARSHIP + PLUGINS (VIA HOMEBREW)
 # ============================================================
-info "Instalando Zsh, Starship e plugins via Homebrew..."
-if brew install -y zsh starship zsh-syntax-highlighting zsh-autosuggestions; then
-    status_zsh_packages="${GREEN} ✓${NC}"
-    success "Pacotes do Zsh e Starship instalados"
+if [[ -x "$BREW_BIN" ]]; then
+    info "Instalando Zsh, Starship e plugins via Homebrew..."
+    if brew install -y zsh starship zsh-syntax-highlighting zsh-autosuggestions; then
+        status_zsh_packages="${GREEN} ✓${NC}"
+        success "Pacotes do Zsh e Starship instalados"
+    else
+        warning "Falha ao instalar Zsh, Starship ou plugins"
+    fi
+else
+    warning "Zsh, Starship e plugins não foram instalados porque o Homebrew não está disponível"
 fi
 
 # ============================================================
@@ -172,35 +211,49 @@ success "Arquivo ~/.zshrc gerado com sucesso"
 # ============================================================
 # DEFINIR ZSH DO BREW COMO SHELL PADRÃO
 # ============================================================
-info "Definindo Zsh do Homebrew como Shell padrão do usuário..."
 BREW_ZSH="/home/linuxbrew/.linuxbrew/bin/zsh"
 
-if grep -q "$BREW_ZSH" /etc/shells 2>/dev/null; then
-    success "Caminho $BREW_ZSH já está em /etc/shells"
-else
-    echo "$BREW_ZSH" | sudo tee -a /etc/shells >/dev/null
-    success "Caminho $BREW_ZSH adicionado ao /etc/shells"
-fi
+if [[ -x "$BREW_ZSH" ]]; then
+    info "Definindo Zsh do Brew como Shell padrão do usuário..."
 
-if sudo usermod --shell "$BREW_ZSH" "$USER"; then
-    # Reseta comando customizado do Ptyxis se existir
-    gsettings reset org.gnome.Ptyxis default-profile-command 2>/dev/null || true
-    status_default_shell="${GREEN} ✓${NC}"
-    success "Shell padrão alterado para Zsh"
+    if grep -Fxq "$BREW_ZSH" /etc/shells 2>/dev/null; then
+        success "Caminho $BREW_ZSH já está em /etc/shells"
+    else
+        if echo "$BREW_ZSH" | sudo tee -a /etc/shells >/dev/null; then
+            success "Caminho $BREW_ZSH adicionado ao /etc/shells"
+        else
+            warning "Não foi possível adicionar $BREW_ZSH ao /etc/shells"
+        fi
+    fi
+
+    if sudo usermod --shell "$BREW_ZSH" "$USER"; then
+        status_default_shell="${GREEN} ✓${NC}"
+        success "Shell padrão alterado para Zsh"
+    else
+        warning "Não foi possível alterar o shell padrão para Zsh"
+    fi
+else
+    warning "Zsh do Homebrew não está disponível; shell padrão não foi alterado"
 fi
 
 # ============================================================
 # INTEGRAÇÃO HOMEBREW + BASH
 # ============================================================
-info "Configurando Homebrew para Bash..."
-sudo tee /etc/profile.d/homebrew.sh >/dev/null << 'EOF'
+if [[ -x "$BREW_BIN" ]]; then
+    info "Configurando Homebrew para Bash..."
+    if sudo tee /etc/profile.d/homebrew.sh >/dev/null << 'EOF'
 # Homebrew (Fedora Silverblue / Atomic)
 if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 EOF
-status_brew_bash="${GREEN} ✓${NC}"
-success "Integração Homebrew/Bash criada"
+    then
+        status_brew_bash="${GREEN} ✓${NC}"
+        success "Integração Homebrew/Bash criada"
+    else
+        warning "Não foi possível criar a integração Homebrew/Bash"
+    fi
+fi
 
 # ============================================================
 # DISABLE NETWORK WAIT-ONLINE
@@ -208,6 +261,9 @@ success "Integração Homebrew/Bash criada"
 info "Desativando NetworkManager-wait-online.service..."
 if sudo systemctl disable NetworkManager-wait-online.service 2>/dev/null; then
     status_network="${GREEN} ✓${NC}"
+    success "NetworkManager-wait-online.service desativado"
+else
+    warning "Falha ao desativar NetworkManager-wait-online.service"
 fi
 
 # ============================================================
@@ -218,11 +274,11 @@ FONTS_DIR="$HOME/.local/share/fonts/office_fonts"
 TMP_ZIP="/tmp/office_fonts.zip"
 
 mkdir -p "$FONTS_DIR"
-if curl -fsSL https://raw.githubusercontent.com/diogopessoa/my-packages-lists/main/silverblue/office_fonts.zip -o "$TMP_ZIP"; then
-    python3 -c "import zipfile; zipfile.ZipFile('$TMP_ZIP').extractall('$FONTS_DIR')"
-    fc-cache -f "$HOME/.local/share/fonts"
+if curl -fsSL https://raw.githubusercontent.com/diogopessoa/my-packages-lists/main/silverblue/office_fonts.zip -o "$TMP_ZIP"     && python3 -c "import zipfile; zipfile.ZipFile('$TMP_ZIP').extractall('$FONTS_DIR')"     && fc-cache -f "$HOME/.local/share/fonts"; then
     status_fonts="${GREEN} ✓${NC}"
     success "Fontes instaladas"
+else
+    warning "Falha ao instalar as Office Fonts"
 fi
 rm -f "$TMP_ZIP"
 
@@ -238,9 +294,14 @@ if git clone --depth 1 https://github.com/Mibea/Hatter.git "$HATTER_DIR" 2>/dev/
     mkdir -p "$ICONS_DIR"
     rm -rf "$ICONS_DIR/Hatter"
     cp -r "$HATTER_DIR/Hatter" "$ICONS_DIR/"
-    gtk-update-icon-cache -f "$ICONS_DIR/Hatter" || true
-    status_icons="${GREEN} ✓${NC}"
-    success "Tema de ícones Hatter instalado"
+    if gtk-update-icon-cache -f "$ICONS_DIR/Hatter"; then
+        status_icons="${GREEN} ✓${NC}"
+        success "Tema de ícones Hatter instalado"
+    else
+        warning "Tema de ícones Hatter foi copiado, mas falhou ao atualizar o cache de ícones"
+    fi
+else
+    warning "Falha ao baixar o tema de ícones Hatter"
 fi
 rm -rf "$HATTER_DIR"
 
@@ -250,26 +311,37 @@ rm -rf "$HATTER_DIR"
 info "Instalando Bootc Manager..."
 if curl -fsSL https://raw.githubusercontent.com/diogopessoa/bootc-manager/main/install.sh | bash; then
     status_rpm_manager="${GREEN} ✓${NC}"
+    success "Bootc Manager instalado com sucesso"
+else
+    warning "Falha ao instalar o Bootc Manager"
 fi
 
 # ============================================================
 # FLATHUB E PACOTES FLATPAK
 # ============================================================
 info "Iniciando migração Flatpak para o Flathub..."
+
+# Evita que o GNOME Software interrompa o script
 pkill -f gnome-software || true
-flatpak config --system --set languages "pt" || true
-sudo flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-# Remove Flatpaks nativos do repositório Fedora corporativo se existirem
-apps_fedora=$(flatpak list --system --columns=application,origin | awk '$2 ~ /^fedora(-testing)?$/ {print $1}')
-if [ -n "$apps_fedora" ]; then
-    echo "$apps_fedora" | xargs sudo flatpak uninstall --system --assumeyes || true
-fi
+if flatpak config --system --set languages "pt"     && flatpak remote-add --if-not-exists         --system         flathub         https://dl.flathub.org/repo/flathub.flatpakrepo; then
 
-FFMPEG_LATEST=$(flatpak remote-ls flathub --runtime --columns=ref | grep "org.freedesktop.Platform.ffmpeg-full" | sort -V | tail -n 1)
+    # Remove Flatpaks instalados a partir dos remotos Fedora, se existirem.
+    if apps_fedora=$(flatpak list --system --columns=application,origin |
+        awk '$2 ~ /^fedora(-testing)?$/ {print $1}'); then
 
-lista_apps=(
-    "$FFMPEG_LATEST"
+        if [[ -n "$apps_fedora" ]]; then
+            if echo "$apps_fedora" | xargs -r flatpak uninstall --system --assumeyes; then
+                success "Flatpaks dos remotos Fedora removidos"
+            else
+                warning "Falha ao remover um ou mais Flatpaks dos remotos Fedora"
+            fi
+        fi
+    else
+        warning "Não foi possível verificar os Flatpaks do repositório Fedora"
+    fi
+
+    lista_apps=(
     app.zen_browser.zen
     com.bitwarden.desktop
     com.brave.Browser
@@ -325,14 +397,48 @@ lista_apps=(
     org.telegram.desktop
     page.codeberg.libre_menu_editor.LibreMenuEditor
     page.tesk.Refine    
-)
+    )
 
-if flatpak install --system --assumeyes flathub "${lista_apps[@]}"; then
-    sudo flatpak remote-delete fedora --force 2>/dev/null || true
-    sudo flatpak remote-delete fedora-testing --force 2>/dev/null || true
-    sudo flatpak uninstall --system --unused --assumeyes || true
-    status_flatpak="${GREEN} ✓${NC}"
-    success "Flatpaks do Flathub sincronizados"
+    if flatpak install --system --assumeyes flathub "${lista_apps[@]}"; then
+        flatpak_cleanup_ok=true
+
+        if flatpak remote-list --columns=name | grep -Fxq "fedora"; then
+            if flatpak remote-delete fedora --force 2>/dev/null; then
+                success "Remoto Fedora removido"
+            else
+                warning "Não foi possível remover o remoto Fedora"
+                flatpak_cleanup_ok=false
+            fi
+        fi
+
+        if flatpak remote-list --columns=name | grep -Fxq "fedora-testing"; then
+            if flatpak remote-delete fedora-testing --force 2>/dev/null; then
+                success "Remoto Fedora Testing removido"
+            else
+                warning "Não foi possível remover o remoto Fedora Testing"
+                flatpak_cleanup_ok=false
+            fi
+        fi
+
+        if flatpak uninstall --system --unused --assumeyes; then
+            success "Runtimes e extensões Flatpak não utilizados removidos"
+        else
+            warning "Falha ao remover runtimes e extensões Flatpak não utilizados"
+            flatpak_cleanup_ok=false
+        fi
+
+        if [[ "$flatpak_cleanup_ok" == true ]]; then
+            status_flatpak="${GREEN} ✓${NC}"
+            success "Flatpaks do Flathub sincronizados"
+        else
+            status_flatpak="${YELLOW} !${NC}"
+            warning "Flatpaks instalados, mas uma ou mais etapas de limpeza falharam"
+        fi
+    else
+        warning "Falha ao instalar um ou mais Flatpaks"
+    fi
+else
+    warning "Não foi possível configurar o Flathub"
 fi
 
 # ============================================================
