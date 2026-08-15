@@ -2,7 +2,7 @@
 
 # Descrição: Script pessoal de configuração do Fedora Silverblue
 # Author: Diogo Pessoa
-# Versão: 3.0
+# Versão: v2.0.1 - Correções de Sintaxe, Sudo e Ajustes de Execução
 # GitHub: https://github.com/diogopessoa/silverblue-one/
 
 set -Eeuo pipefail
