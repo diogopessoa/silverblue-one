@@ -160,7 +160,7 @@ cat << 'EOF' > "$HOME/.zshrc"
 # ============================================================
 # MENSAGEM DE BOAS-VINDAS DO ZSH
 if [[ -o interactive ]]; then
-    echo "\033[1;32m>_ Zsh\033[0m está pronto!"
+    echo "\033[1;32m >_ Zsh\033[0m está pronto!"
     echo ""
 fi
 
