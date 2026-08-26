@@ -165,6 +165,25 @@ if [[ -o interactive ]]; then
 fi
 
 # ============================================================
+# HISTÓRICO DE COMANDOS
+# ============================================================
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+
+# Opções de comportamento do histórico
+setopt SHARE_HISTORY          # Compartilha o histórico entre abas/terminais abertos
+setopt HIST_IGNORE_DUPS       # Não grava comandos duplicados seguidos
+setopt HIST_IGNORE_SPACE      # Ignora comandos iniciados com espaço
+setopt HIST_EXPIRE_DUPS_FIRST # Apaga duplicados primeiro ao atingir o limite
+
+# ============================================================
+# ATALHOS DE TECLADO (SETA PARA CIMA E PARA BAIXO)
+# ============================================================
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+
+# ============================================================
 # HOMEBREW ENV
 # ============================================================
 if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
