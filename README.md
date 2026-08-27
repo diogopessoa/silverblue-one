@@ -10,8 +10,8 @@
 **Silverblue One** é um script de pós-instalação pessoal para [Fedora Atomic](https://fedoraproject.org/atomic-desktops/), compatível com as versões 42>44+.
 
 ## O que o script entrega
-
-- **Zsh Shell**:  Uma linha de comando inteligente com auto-sugestão e auto-completar
+ 
+- **Zsh Shell**: Linha de comando inteligente com auto-sugestão e auto-completar + histórico de comandos (seta para cima ↑ no teclado)
 - **Homebrew**: gerenciador de pacotes para programas CLI
 - **Terminal**: integrado e configurado com **Bash** e **Zsh** e **brew**
 - **Bootc Manager**: CLI simples para gerenciar o sistema atômico com Bootc
