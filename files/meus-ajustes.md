@@ -154,10 +154,12 @@ A [documentação do VaultSync](https://github.com/psimaker/vaultsync/blob/main/
   - configurações salvas do dock ou painel: https://github.com/diogopessoa/my-package-lists/tree/main/share
 - **Foresight** (open activities overview when workspace is empty) por @pesarder.dev
 - **Lock Keys** por @lockkeys
-- **Notification Timeout** por @chlumskyaclav
-- **ScreenToSpace** por @dilzhan 
+- **Status Area Horizontal Spacing** por @mathematical.coffee
+  - Horizontal padding: 3
+- **Transparent Top Bar** por @fpix
+  - Horizontal padding: 3
 - **Vitals** por @corecoding
-  - >Fixing it only requires going into Vital's settings and changing the storage path from `/` to `/sysroot`
+  - Fixing it only requires going into Vital's settings and changing the storage path from `/` to `/sysroot`
   - [Vitals stopped reporting Disk data on Fedora](https://github.com/corecoding/Vitals/issues/477#issuecomment-4950507147)
 - **WinTile** por @nowsci
 - **Workspace Bar** por @jguece
@@ -227,18 +229,6 @@ Menu, Configurações...
 
 
 ## Ajustes Opcionais
-
-### dns.forge.de 
-
-- internet mais rápida e bloqueio de anúncios
-
-```
-# IPV4
-49.12.67.122, 91.99.154.175, 176.9.93.198, 176.9.1.117
-
-# IPV6
-2a01:4f8:c013:29d::122, 2a01:4f8:c010:8c35::175
-```
 
 ### NextDNS do meu Fedora 
 [Minha configuração NextDNS](https://my.nextdns.io/74e421/setup)
