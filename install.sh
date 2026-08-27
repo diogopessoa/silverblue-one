@@ -361,6 +361,8 @@ if flatpak config --system --set languages "pt"     && flatpak remote-add --if-n
     fi
 
     lista_apps=(
+    org.gtk.Gtk3theme.adw-gtk3
+    org.gtk.Gtk3theme.adw-gtk3-dark
     app.zen_browser.zen
     com.bitwarden.desktop
     com.brave.Browser
