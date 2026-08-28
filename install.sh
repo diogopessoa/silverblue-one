@@ -137,11 +137,11 @@ else
 fi
 
 # ============================================================
-# INSTALAÇÃO ZSH + STARSHIP + PLUGINS (VIA HOMEBREW)
+# INSTALAÇÃO DE PROGRAMAS VIA HOMEBREW
 # ============================================================
 if [[ -x "$BREW_BIN" ]]; then
     info "Instalando Zsh, Starship e plugins via Homebrew..."
-    if brew install -y zsh starship zsh-syntax-highlighting zsh-autosuggestions; then
+    if brew install -y zsh starship zsh-syntax-highlighting zsh-autosuggestions micro btop fastfetch; then
         status_zsh_packages="${GREEN} ✓${NC}"
         success "Pacotes do Zsh e Starship instalados"
     else
@@ -471,7 +471,7 @@ echo -e " $status_rpm Distrobox (rpm-ostree)"
 echo -e " $status_brew Homebrew"
 echo -e " $status_brew_update Homebrew Auto-Update"
 echo -e " $status_distrobox_upgrade Distrobox Auto-Update"
-echo -e " $status_zsh_packages Zsh + Starship + Plugins (Brew)"
+echo -e " $status_zsh_packages Zsh + Starship + Micro + Btop + fastfetch (Brew)"
 echo -e " $status_zshrc Configuração ~/.zshrc"
 echo -e " $status_default_shell Zsh definido como Shell Padrão"
 echo -e " $status_brew_bash Integração Homebrew/Bash"
