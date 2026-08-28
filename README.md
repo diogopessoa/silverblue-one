@@ -13,6 +13,7 @@
  
 - **Zsh Shell**: Linha de comando inteligente com auto-sugestão e auto-completar + histórico de comandos (seta para cima ↑ no teclado)
 - **Homebrew**: gerenciador de pacotes para programas CLI
+  - Instala com `brew`: Zsh + Starship + Micro + Btop + fastfetch
 - **Terminal**: integrado e configurado com **Bash** e **Zsh** e **brew**
 - **Bootc Manager**: CLI simples para gerenciar o sistema atômico com Bootc
 - **Distrobox**: contâiner para instalar e executar distribuições Linux via terminal
