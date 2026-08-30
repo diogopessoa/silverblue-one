@@ -227,6 +227,25 @@ Menu, Configurações...
 - **Iconize**  por Florian Woelki
 - **Similar Notes**  por Young Lee
 
+## Obsidian Estrutura de Pastas
+
+| Pasta         | Conceito                  |
+| ------------- | ------------------------- |
+| `00-Inbox`    | Entrada / captura         |
+| `01-Projetos` | Projeto em andamento      |
+| `02-Áreas`    | Área contínua             |
+| `03-Recursos` | Conhecimento / referência |
+| `90-Anexos`   | Arquivos anexados         |
+| `99-Arquivos` | Arquivado                 |
+
+Usar ícones Lucide com a extensão `Iconize` que combinam particularmente bem com o visual do Obsidian:
+
+- Inbox        → inbox
+- Projetos     → folder-kanban
+- Áreas        → circle-dot
+- Recursos     → library
+- Anexos       → paperclip
+- Arquivos     → archive
 
 ## Ajustes Opcionais
 
