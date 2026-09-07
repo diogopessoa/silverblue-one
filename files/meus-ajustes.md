@@ -191,6 +191,12 @@ Menu, Configurações...
 - Indexar outros mecanismos de pesquisa
 - Economia de memória
 
+**Atalho de teclado**
+
+Menu, Configurações, Sistema, Atalhos (brave://settings/system/shortcuts).
+- aba anterior > Adicionar atalho: `ctrl + " '`
+  - tecla acima de `Tab`
+
 ## Anki addons
 - Deck progress bar
 - Passfail 2 remove the easy and hard buttons
