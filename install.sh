@@ -402,6 +402,7 @@ if flatpak config --system --set languages "pt"     && flatpak remote-add --if-n
     org.gnome.Contacts
     org.gnome.Evince
     org.gnome.FileRoller
+    org.gnome.font-viewer
     org.gnome.Logs
     org.gnome.Loupe
     org.gnome.Shotwell
