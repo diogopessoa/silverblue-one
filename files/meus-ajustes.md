@@ -87,65 +87,13 @@ Após instalar [Syncthing-Fork](https://play.google.com/store/apps/details?id=co
 - Pasta: /DCIM
 - Filtros (nada)
 
-## VaultSync no iOS
+## SyncTrain e Obsidian
 
-### Etapa 1 - Instale
+Para fazer a sincronização de arquivos do iOS (iPhone) entre outros dispositivos com o SyncThing, o SyncTrain é a solução.
 
-**[VaultSync na App Store](https://apps.apple.com/br/app/vaultsync-for-obsidian/id6761845197)**
+O passo a passo de configuração está disponível no meu [GitHub](https://github.com/diogopessoa/my-package-lists/blob/main/iphone/SyncTrain%20e%20Obsidian.md).
 
-Não abra o Obsidian primeiro.
-
-Abra primeiro o VaultSync.
-
-### Etapa 2 – Adicionar o iPhone como dispositivo Syncthing
-
-No VaultSync escolha:
-
-```
-Add Device
-```
-
-Ele oferecerá duas opções:
-
-* Scan QR Code (recomendado)
-* Paste Device ID
-
-Escolha **Scan QR Code**.
-
-### Etapa 3 – Mostrar o QR Code no Linux
-
-Na interface Web do Syncthing:
-
-```
-Ações
-→ Mostrar ID
-```
-
-Será exibido um QR Code.
-
-Aponte a câmera do iPhone para esse QR Code.
-
-O VaultSync adicionará automaticamente o computador Linux como peer.
-
-### Etapa 4 – Compartilhar o cofre
-
-Ainda no Linux:
-
-Abra a pasta compartilhada do Obsidian e marque o iphone.
-
-Somente depois que a sincronização inicial terminar, abra o Obsidian.
-
-### Etapa 5 – Primeira sincronização
-
-Na primeira vez:
-
-* deixe o iPhone desbloqueado;
-* mantenha o VaultSync aberto;
-* aguarde até que todos os arquivos sejam sincronizados.
-
-### Etapa 6 - Automação de uploud VaultSync + Obsidian
-
-A [documentação do VaultSync](https://github.com/psimaker/vaultsync/blob/main/docs/instant-upload.md) ensina a usar o app **Shortcuts** (Atalhos) do iPhone para fazer uplouds automáticos das notas ao fechar o Obsidian. 
+*Na primeira sincronização, mantenha o SyncTrain aberto e aguarde até que todos os arquivos sejam sincronizados.*
 
 ## GNOME Shell Extensions
 - **Caffeine** por patapon.info
